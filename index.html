@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Websuche</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script async src="https://cse.google.com/cse.js?cx=16ffb34b7dfee45d3"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #f8f9fa, #e9ecef);
+      text-align: center;
+    }
+
+    header {
+      padding: 50px 20px 20px;
+    }
+
+    h1 {
+      font-size: 36px;
+      color: #343a40;
+      margin-bottom: 30px;
+    }
+
+    .custom-search-box {
+      max-width: 600px;
+      margin: 0 auto 40px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .custom-search-box input {
+      border-radius: 50px;
+      padding: 12px 20px;
+      border: 1px solid #ced4da;
+      font-size: 16px;
+      width: 70%;
+    }
+
+    .custom-search-box button {
+      border-radius: 50px;
+      padding: 12px 25px;
+      background-color: #007bff;
+      border: none;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+
+    .custom-search-box button:hover {
+      background-color: #0056b3;
+    }
+
+    .gcse-searchresults {
+      padding: 0 20px 50px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Suche im Web</h1>
+    <div class="custom-search-box">
+      <input type="text" id="query" placeholder="Suchbegriff eingeben...">
+      <button onclick="doSearch()">Suchen</button>
+    </div>
+    <div class="gcse-searchresults-only"></div>
+  </header>
+
+  <script>
+    function doSearch() {
+      var query = document.getElementById("query").value;
+      google.search.cse.element.getElement("searchresults-only0").execute(query);
+    }
+
+    window.__gcse = {
+      callback: function() {
+        google.search.cse.element.render({
+          div: "gcse-searchresults-only",
+          tag: "searchresults-only",
+          attributes: {
+            name: "searchresults-only0"
+          }
+        });
+      }
+    };
+  </script>
+
+</body>
+</html>
